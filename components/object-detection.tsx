@@ -25,7 +25,7 @@ const ObjectDetection = () => {
       runObjectDetection(net);
     }, 10);
   }
-  async function runObjectDetection(net) {
+  async function runObjectDetection(net: any) {
     if (
       canvasRef.current &&
       webcamRef.current !== null &&
@@ -58,7 +58,7 @@ const ObjectDetection = () => {
   useEffect(() => {
     runCoco();
     showmyVideo();
-  }, []);
+  }, [runCoco]);
 
   return (
     <div className='mt-8'>
