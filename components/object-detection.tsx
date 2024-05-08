@@ -12,9 +12,11 @@ tf.setBackend('webgl').then(() => {
 
 let detectInterval;
 const ObjectDetection = () => {
+  const webcamRef = useRef<Webcam>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const webcamRef = useRef(null);
-  const canvasRef = useRef(null);
+  //const webcamRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  // const canvasRef = useRef(null);
 
   async function runCoco() {
     setIsLoading(true);
@@ -23,7 +25,7 @@ const ObjectDetection = () => {
 
     detectInterval = setInterval(() => {
       runObjectDetection(net);
-    }, 10);
+    }, 50);
   }
   async function runObjectDetection(net: any) {
     if (
@@ -58,7 +60,7 @@ const ObjectDetection = () => {
   useEffect(() => {
     runCoco();
     showmyVideo();
-  }, [runCoco]);
+  }, []);
 
   return (
     <div className='mt-8'>
